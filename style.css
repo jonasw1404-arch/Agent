@@ -6,9 +6,11 @@ html, body {
   height: 100%;
   width: 100%;
   background-color: black;
+  font-family: Arial, sans-serif;
+  color: white;
 }
 
-/* Hintergrundbild immer zentriert, 16:9-Format */
+/* Hintergrundbild */
 #background {
   position: absolute;
   top: 50%;
@@ -22,4 +24,57 @@ html, body {
   background-repeat: no-repeat;
   background-size: cover;
   transform: translate(-50%, -50%);
+}
+
+/* Zentriertes Rechteck */
+.centerBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7); /* halbtransparent */
+  padding: 40px 60px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.centerBox h1 {
+  margin-bottom: 20px;
+}
+
+.centerBox button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+}
+
+/* Mission Container */
+.hidden {
+  display: none;
+}
+
+#missionContainer {
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 1200px;
+}
+
+.missionBox {
+  flex: 1;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.missionBox h2 {
+  margin-top: 0;
 }
