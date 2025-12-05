@@ -7,7 +7,7 @@ startButton.addEventListener('click', () => {
   missionContainer.style.display = 'flex';
 });
 
-// Prüfen der Codes
+// Codes prüfen
 const buttons = document.querySelectorAll('.checkButton');
 
 buttons.forEach(button => {
