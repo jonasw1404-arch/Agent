@@ -1,20 +1,32 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <title>Code Prüfer</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+document.addEventListener("DOMContentLoaded", function() {
+    const button = document.getElementById("checkButton");
+    const input = document.getElementById("codeInput");
+    const message = document.getElementById("message");
+    const music = document.getElementById("backgroundMusic");
 
-<div class="container">
-    <h2>Gib den 4-stelligen Code ein:</h2>
-    <input type="text" id="codeInput" maxlength="4" placeholder="****">
-    <button id="checkButton">OK</button>
-    <div id="message"></div>
-</div>
+    button.addEventListener("click", function() {
+        // Musik starten beim ersten Klick
+        if (music.paused) {
+            music.volume = 0.5; // Lautstärke
+            music.play();
+        }
 
-<script src="script.js"></script>
-<audio id="backgroundMusic" src="musik.mp3" autoplay loop></audio>
-</body>
-</html>
+        // Code-Check
+        if (input.value === "5443") {
+            message.style.color = "#00ff8c";
+            message.textContent = "Du hast es geschafft!";
+        } else {
+            message.style.color = "#ff4444";
+            message.textContent = "Falsches Passwort — versuch es nochmal.";
+            input.value = "";
+            input.focus();
+        }
+    });
+
+    // Enter-Taste unterstützt
+    input.addEventListener("keypress", function(e) {
+        if (e.key === "Enter") {
+            button.click();
+        }
+    });
+});
