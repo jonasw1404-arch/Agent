@@ -1,117 +1,89 @@
-/* ----------- Hintergrundbild dynamisch nach Seitenverhältnis ---------- */
-
-html, body {
+/* Hintergrundbild NUR im Body → verhindert doppelte Anzeige */
+body {
     margin: 0;
     padding: 0;
-    height: 100%;
-    font-family: Arial, sans-serif;
-
-    background-image: url("hintergrund.jpg");
+    overflow: hidden;
+    background-image: url("background.jpg");
+    background-position: center;
     background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
+    background-size: cover;
+    height: 100vh;
 }
 
-/* Hochformatiger als 16:9 → Bild passt auf die Höhe */
-@media (max-aspect-ratio: 16/9) {
-    html, body {
-        background-size: auto 100vh;
-    }
-}
-
-/* Querformatiger als 16:9 → Bild passt auf die Breite */
-@media (min-aspect-ratio: 16/9) {
-    html, body {
-        background-size: 100vw auto;
-    }
-}
-
-/* ----------- Startscreen ---------- */
-
-.hidden {
-    display: none;
-}
-
-.startScreen {
-    background: rgba(0,0,0,0.55);
-    padding: 40px 50px;
-    border-radius: 14px;
+/* Startscreen */
+#startScreen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
     color: white;
-    max-width: 350px;
-    margin: auto;
-    margin-top: 10vh;
 }
 
-#startButton {
-    padding: 15px 30px;
-    font-size: 20px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    background: #ffffffaa;
-}
-
-/* ----------- Code Container ---------- */
-
+/* 5 Codefelder */
 #codeContainer {
+    display: none;
+    width: 100%;
+    height: 100vh;
+
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    align-items: center;
+
     gap: 20px;
-    width: 100%;
-    padding: 30px;
-    box-sizing: border-box;
+    padding: 20px;
 }
 
-.code-box {
-    background: rgba(0,0,0,0.55);
-    padding: 25px;
-    border-radius: 12px;
+/* Codefelder */
+.field {
+    display: flex;
+    flex-direction: column;
+    background: rgba(0,0,0,0.5);
+    padding: 15px;
+    border-radius: 10px;
+    width: 130px;
+}
+
+label {
     color: white;
     text-align: center;
-    width: 200px;
+    margin-bottom: 8px;
+    font-size: 16px;
 }
 
-.code-box input {
-    width: 90%;
+input {
     padding: 10px;
-    font-size: 18px;
-    border-radius: 8px;
-    border: none;
+    font-size: 16px;
     text-align: center;
+    border-radius: 5px;
+    border: none;
 }
 
-.code-box button {
+button {
     margin-top: 10px;
-    padding: 10px 20px;
-    border-radius: 8px;
+    padding: 8px;
+    font-size: 16px;
     border: none;
+    border-radius: 5px;
+    background-color: white;
     cursor: pointer;
 }
 
-.message {
-    margin-top: 12px;
-    font-size: 18px;
-    font-weight: bold;
+p {
+    margin-top: 10px;
+    color: white;
+    text-align: center;
+    min-height: 20px;
 }
 
-/* ----------- Layout Steuerung nach Orientierung ---------- */
-
-/* Hochformat → Boxen untereinander */
+/* 📱 Hochformat (untereinander) */
 @media (orientation: portrait) {
     #codeContainer {
         flex-direction: column;
-        align-items: center;
-    }
-
-    .code-box {
-        width: 80%;
-        max-width: 300px;
     }
 }
 
-/* Querformat → Boxen nebeneinander */
+/* 📺 Querformat (nebeneinander) */
 @media (orientation: landscape) {
     #codeContainer {
         flex-direction: row;
