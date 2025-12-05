@@ -68,10 +68,15 @@ html, body {
   background-color: rgba(0,0,0,0.7);
   padding: 20px;
   border-radius: 10px;
+
   display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Inhalt oben, Code-Bereich unten */
-  height: 300px; /* Einheitliche Höhe für alle Rätsel */
+  flex-direction: column;   /* Inhalt oben, Code-Bereich unten */
+  justify-content: flex-start;
+  position: relative;
+}
+
+.content {
+  margin-bottom: auto; /* Oben bleibt variabel, Code-Bereich unten fix */
 }
 
 .codeContainer {
@@ -79,11 +84,18 @@ html, body {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin-bottom: 10px; /* Abstand zum unteren Rand */
+
+  position: absolute;
+  bottom: 15px; /* Gleicher Abstand aller Code-Bereiche nach unten */
+  left: 0;
+  width: 100%;
+  padding: 0 10px; /* Innenabstand links/rechts */
+  box-sizing: border-box;
 }
 
 .codeInput {
-  width: 70%;
+  flex: 1;
+  max-width: 70%;
   padding: 6px;
   border-radius: 5px;
   border: none;
