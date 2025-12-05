@@ -1,30 +1,33 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const startScreen = document.getElementById("startScreen");
-    const codeContainer = document.getElementById("codeContainer");
-    const music = document.getElementById("backgroundMusic");
+const startButton = document.getElementById("startButton");
+const startScreen = document.getElementById("startScreen");
+const codeContainer = document.getElementById("codeContainer");
+const music = document.getElementById("bgMusic");
 
-    document.getElementById("startButton").addEventListener("click", () => {
-        startScreen.classList.add("hidden");
-        codeContainer.classList.remove("hidden");
+// Richtige Codes → hier ändern
+const correctCodes = {
+    1: "1234",
+    2: "5678",
+    3: "9999",
+    4: "0000",
+    5: "2468"
+};
 
-        music.volume = 0.5;
-        music.play();
-    });
+startButton.addEventListener("click", () => {
+    startScreen.style.display = "none";
+    codeContainer.style.display = "flex";
+    music.volume = 0.5;
+    music.play();
 });
 
-/* Codeprüfung für alle Felder */
+function checkCode(number) {
+    const input = document.getElementById("code" + number).value;
+    const result = document.getElementById("result" + number);
 
-function checkCode(num) {
-    const input = document.getElementById("code" + num);
-    const msg = document.getElementById("msg" + num);
-
-    const correctCode = "5443";
-
-    if (input.value === correctCode) {
-        msg.style.color = "#00ff8c";
-        msg.textContent = "Code korrekt!";
+    if (input === correctCodes[number]) {
+        result.textContent = "✔ Code korrekt";
+        result.style.color = "lightgreen";
     } else {
-        msg.style.color = "#ff4444";
-        msg.textContent = "Code inkorrekt!";
+        result.textContent = "✖ Code falsch";
+        result.style.color = "red";
     }
 }
