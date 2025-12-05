@@ -1,57 +1,61 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rätsel-App</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Background</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden; /* kein Scrollen */
+    }
+
+    #bg-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: black; /* falls Bild nicht 100% deckt */
+    }
+
+    #bg-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* hält 16:9 ein */
+    }
+  </style>
 </head>
 <body>
+  <div id="bg-container">
+    <img id="bg-img" src="hintergrund.jpg" alt="Background" />
+  </div>
 
-    <div id="startScreen">
-        <h1>Rätsel Starten</h1>
-        <button id="startButton">Start</button>
-    </div>
+  <script>
+    function resizeImage() {
+      const img = document.getElementById("bg-img");
+      const screenRatio = window.innerWidth / window.innerHeight;
+      const imageRatio = 16 / 9;
 
-    <div id="codeContainer">
-        <div class="field">
-            <label>Codefeld 1</label>
-            <input type="text" id="code1">
-            <button onclick="checkCode(1)">OK</button>
-            <p id="result1"></p>
-        </div>
+      if (screenRatio > imageRatio) {
+        // Bildschirm ist querformatiger → Bild an Breite anpassen
+        img.style.width = "100%";
+        img.style.height = "auto";
+      } else {
+        // Bildschirm ist hochformatiger → Bild an Höhe anpassen
+        img.style.width = "auto";
+        img.style.height = "100%";
+      }
+    }
 
-        <div class="field">
-            <label>Codefeld 2</label>
-            <input type="text" id="code2">
-            <button onclick="checkCode(2)">OK</button>
-            <p id="result2"></p>
-        </div>
-
-        <div class="field">
-            <label>Codefeld 3</label>
-            <input type="text" id="code3">
-            <button onclick="checkCode(3)">OK</button>
-            <p id="result3"></p>
-        </div>
-
-        <div class="field">
-            <label>Codefeld 4</label>
-            <input type="text" id="code4">
-            <button onclick="checkCode(4)">OK</button>
-            <p id="result4"></p>
-        </div>
-
-        <div class="field">
-            <label>Codefeld 5</label>
-            <input type="text" id="code5">
-            <button onclick="checkCode(5)">OK</button>
-            <p id="result5"></p>
-        </div>
-    </div>
-
-    <audio id="bgMusic" src="musik.mp3" loop></audio>
-
-    <script src="script.js"></script>
+    window.addEventListener("resize", resizeImage);
+    window.addEventListener("load", resizeImage);
+  </script>
 </body>
 </html>
