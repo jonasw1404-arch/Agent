@@ -1,3 +1,5 @@
+/* ----------- Hintergrundbild dynamisch nach Seitenverhältnis ---------- */
+
 html, body {
     margin: 0;
     padding: 0;
@@ -10,16 +12,108 @@ html, body {
     background-attachment: fixed;
 }
 
-/* Hochformatiger als 16:9 → Bildhöhe basiert */
+/* Hochformatiger als 16:9 → Bild passt auf die Höhe */
 @media (max-aspect-ratio: 16/9) {
     html, body {
         background-size: auto 100vh;
     }
 }
 
-/* Breiter als 16:9 → Bildbreite basiert */
+/* Querformatiger als 16:9 → Bild passt auf die Breite */
 @media (min-aspect-ratio: 16/9) {
     html, body {
         background-size: 100vw auto;
+    }
+}
+
+/* ----------- Startscreen ---------- */
+
+.hidden {
+    display: none;
+}
+
+.startScreen {
+    background: rgba(0,0,0,0.55);
+    padding: 40px 50px;
+    border-radius: 14px;
+    text-align: center;
+    color: white;
+    max-width: 350px;
+    margin: auto;
+    margin-top: 10vh;
+}
+
+#startButton {
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #ffffffaa;
+}
+
+/* ----------- Code Container ---------- */
+
+#codeContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.code-box {
+    background: rgba(0,0,0,0.55);
+    padding: 25px;
+    border-radius: 12px;
+    color: white;
+    text-align: center;
+    width: 200px;
+}
+
+.code-box input {
+    width: 90%;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    text-align: center;
+}
+
+.code-box button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.message {
+    margin-top: 12px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* ----------- Layout Steuerung nach Orientierung ---------- */
+
+/* Hochformat → Boxen untereinander */
+@media (orientation: portrait) {
+    #codeContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .code-box {
+        width: 80%;
+        max-width: 300px;
+    }
+}
+
+/* Querformat → Boxen nebeneinander */
+@media (orientation: landscape) {
+    #codeContainer {
+        flex-direction: row;
     }
 }
