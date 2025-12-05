@@ -13,6 +13,7 @@ html, body {
     background-repeat: no-repeat;
 }
 
+/* Startscreen */
 .startScreen {
     background: rgba(0, 0, 0, 0.4);
     padding: 40px 50px;
@@ -22,12 +23,15 @@ html, body {
     box-shadow: 0 0 20px rgba(0,0,0,0.2);
 }
 
-.container {
-    display: none; /* versteckt zunächst */
+/* Container für beide Codefelder */
+#codeContainer {
+    display: none; /* Standardmäßig versteckt */
     gap: 30px;
-    display: flex; /* Felder nebeneinander */
+    flex-direction: row;
+    justify-content: center;
 }
 
+/* Einzelnes Codefeld */
 .codeBox {
     background: rgba(0,0,0,0.3);
     padding: 20px 30px;
@@ -60,6 +64,7 @@ button {
     font-weight: bold;
 }
 
+/* Shake-Animation für falschen Code */
 @keyframes shake {
   0% { transform: translateX(0); }
   25% { transform: translateX(-5px); }
