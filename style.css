@@ -1,16 +1,26 @@
-body {
-    background-color: #1e68ff;
+/* Vollformat Hintergrundbild + Blau als Fallback */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
-    text-align: center;
-    margin-top: 150px;
-    color: white;
+    display: flex;
+    justify-content: center; /* horizontal zentrieren */
+    align-items: center;     /* vertikal zentrieren */
+    background-color: #1e68ff; /* Blau, falls Bild nicht geladen wird */
+    background-image: url('hintergrund.jpg'); /* Name deines Bildes */
+    background-size: cover;   /* Bild passt sich Bildschirmgröße an */
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .container {
-    background: rgba(255,255,255,0.15);
-    padding: 30px;
-    display: inline-block;
+    background: rgba(0, 0, 0, 0.4); /* leicht dunkler Hintergrund für Text */
+    padding: 40px 50px;
     border-radius: 12px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
 }
 
 input {
@@ -20,6 +30,7 @@ input {
     border: none;
     border-radius: 6px;
     text-align: center;
+    margin-right: 10px;
 }
 
 button {
@@ -28,7 +39,6 @@ button {
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    margin-left: 10px;
 }
 
 #message {
